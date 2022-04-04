@@ -14,16 +14,16 @@ CREATE TABLE IF NOT EXISTS employees (
 
 CREATE TABLE IF NOT EXISTS departments
 (
-    dept_no character varying(4) COLLATE pg_catalog."default" NOT NULL,
-    dept_name character varying(40) COLLATE pg_catalog."default" NOT NULL,
+    dept_no VARCHAR(4) NOT NULL,
+    dept_name VARCHAR(40) NOT NULL,
     CONSTRAINT departments_pkey PRIMARY KEY (dept_no),
     CONSTRAINT departments_dept_name_key UNIQUE (dept_name)
-)
+);
 
 
 -- Create department employee relation table
-
-CREATE TABLE IF NOT EXISTS dept_emp (
+CREATE TABLE IF NOT EXISTS dept_emp 
+(
     emp_no INT NOT NULL,
 	dept_no VARCHAR(4) NOT NULL,
     from_date DATE NOT NULL,
@@ -60,9 +60,9 @@ CREATE TABLE IF NOT EXISTS salaries (
 
 CREATE TABLE IF NOT EXISTS titles (
   emp_no INT NOT NULL,
-  salary INT NOT NULL,
+  title varchar(50) NOT NULL,
   from_date DATE NOT NULL,
   to_date DATE NOT NULL,
   FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-  PRIMARY KEY (emp_no)
+  PRIMARY KEY (emp_no,title,from_date)
 );
