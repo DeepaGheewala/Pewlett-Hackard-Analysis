@@ -22,6 +22,8 @@ The analysis should cover the following results :
 4) [Count of Retiring titles](#Count-of-Retiring-Titles)
 5) [Find the eligible retiring employees for retirement package](#Mentorship-Eligible-Employees)
 
+## Design
+Bobb needed a database to store the csv files. Here a SQL database is created and all different tables were created using the [schema script](
 ## Results
 ### List of Retiring Employees
 1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
@@ -98,13 +100,15 @@ To find the list of eligible employees for mentorship program
   WHERE e.birth_date BETWEEN '1965-01-01' AND '1965-12-31' AND de.to_date ='9999-01-01'
   order by e.emp_no
 ```
-<img src="Images/titles_counts.png" align="center"/>
 The mentorship_eligibility data is exported to [mentorship_eligibility.csv](Data/Mentorship_eligibility.csv)
 
 ## Summary
 ### How many roles will need to be filled as the "silver tsunami" begins to make an impact?
 Pewlett Hackard has **300024** total of number of Employees. Total number of Employees that are going to retire is **72458**. 
 This means approx **24%** of the employees will be retired soon. The company needs to take immediate actions and run a hiring drive so that they get enough time to train and knowledge transfer from experienced to new employees.
+
+Below image shows the which titles are retiring 
+<img src="Images/titles_counts.png" align="center"/>
 
 ### Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
 The number of employees retiring are **72458** , where as the number of employees eligible for mentorship program are **1549**. This means the eligible employees are almost **2.14%** less. 
