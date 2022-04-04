@@ -27,7 +27,7 @@ The analysis should cover the following results :
 1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
 2) Then we need to join to the Titles table to get those employees current titles
 
-''' sql
+``` sql
   drop table if exists Retirement_titles
   SELECT distinct on (e.emp_no) e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date 
   INTO Retirement_titles
@@ -35,5 +35,5 @@ The analysis should cover the following results :
   Left Join titles t on t.emp_no = e.emp_no
   WHERE e.birth_date BETWEEN '1952-01-01' AND '1955-12-31'
   order by e.emp_no
-'''
+```
 ## Summary
