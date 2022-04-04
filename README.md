@@ -133,7 +133,7 @@ The mentorship_eligibility data is exported to [mentorship_eligibility.csv](Data
 Pewlett Hackard has **300024** total of number of Employees. Total number of Employees that are going to retire is **72458**. 
 This means approx **24%** of the employees will be retired soon. The company needs to take immediate actions and run a hiring drive so that they get enough time to train and knowledge transfer from experienced to new employees.
 
-Below image shows the which titles are retiring 
+The image shows the which titles are retiring 
 <img src="Images/titles_counts.png" align="center"/>
 
 ### Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
