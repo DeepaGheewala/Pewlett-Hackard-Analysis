@@ -23,7 +23,33 @@ The analysis should cover the following results :
 5) [Find the eligible retiring employees for retirement package](#Mentorship-Eligible-Employees)
 
 ## Design
-Bobb needed a database to store the csv files. Here a SQL database is created and all different tables were created using the [schema script](
+Bobb needed a database to store the csv files. So lets create a high level Entity Relationship Diagram (ERD), which helps to understand the relationships between each entities. 
+***Entities  ***          
+1) Employee
+2) Department
+
+***Relation Tables***
+1) Emp_Dept
+2) Dept_Manager
+3) Salaries
+4) Titles
+
+<img src="Queries/ERD.png" />
+
+Here a SQL database is created and all different tables were created using 
+1) [Schema script](Queries/schema.sql) - it creates following tables
+- Employee
+- Department
+- Emp_Dept
+- Dept_Manager
+- Salaries
+- Titles
+3) [Query generated Tables](Queries/Employee_Database_challenge.sql)
+- Retirement titles
+- Unique titles
+- Retiring titles
+- Mentorship eligibility
+
 ## Results
 ### List of Retiring Employees
 1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
