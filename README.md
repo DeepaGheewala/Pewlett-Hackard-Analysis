@@ -1,5 +1,4 @@
 # Pewlett-Hackard-Analysis
-SQL Project
 
 ## Overview
 ### Background
