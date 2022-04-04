@@ -54,7 +54,6 @@ Here a SQL database is created and all different tables were created using
 1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
 
 ``` sql
-  drop table if exists Retirement_titles
   SELECT distinct e.emp_no, e.first_name, e.last_name
   from employees e
   WHERE e.birth_date BETWEEN '1952-01-01' AND '1955-12-31'
@@ -66,7 +65,6 @@ Here a SQL database is created and all different tables were created using
 2) Then we need to join to the Titles table to get those employees current titles
 
 ``` sql
-  drop table if exists Retirement_titles;
   SELECT distinct e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date 
   INTO Retirement_titles
   from employees e
@@ -81,7 +79,6 @@ The Retirement_titles data is exported to [Retirement_titles.csv](Data/Retiremen
 3) Run a query on the new Retirement_titles table to find the unique titles
 
 ``` sql
-  drop table if exists Unique_titles;
   Select  distinct on (emp_no) emp_no, first_name, last_name, title
   into Unique_titles
   from Retirement_titles
@@ -96,7 +93,6 @@ The Unique_titles data is exported to [Unique_titles.csv](Data/Unique_titles.csv
 5) then in select count the titles with the title name as next field.
 
 ``` sql
-  drop table if exists retiring_titles;
   Select   count(title),title
   into retiring_titles
   from Unique_titles
@@ -116,7 +112,6 @@ To find the list of eligible employees for mentorship program
 
 ``` sql
   --Mentorship eligible employees-
-  drop table if exists mentorship_eligibility;
   SELECT distinct on (e.emp_no) e.emp_no, e.first_name, e.last_name, t.title, de.from_date, de.to_date 
   INTO mentorship_eligibility
   from employees e
