@@ -22,13 +22,15 @@ The analysis should cover the following results :
 4) [Count of Retiring titles](#Count-of-Retiring-Titles)
 5) [Find the eligible retiring employees for retirement package](#Mentorship-Eligible-Employees)
 
+## Design
+Bobb needed a database to store the csv files. Here a SQL database is created and all different tables were created using the [schema script](
 ## Results
 ### List of Retiring Employees
 1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
 
 ``` sql
   drop table if exists Retirement_titles
-  SELECT distinct on (e.emp_no) e.emp_no, e.first_name, e.last_name
+  SELECT distinct e.emp_no, e.first_name, e.last_name
   from employees e
   WHERE e.birth_date BETWEEN '1952-01-01' AND '1955-12-31'
   order by e.emp_no;
@@ -39,8 +41,8 @@ The analysis should cover the following results :
 2) Then we need to join to the Titles table to get those employees current titles
 
 ``` sql
-  drop table if exists Retirement_titles
-  SELECT distinct on (e.emp_no) e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date 
+  drop table if exists Retirement_titles;
+  SELECT distinct e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date 
   INTO Retirement_titles
   from employees e
   Left Join titles t on t.emp_no = e.emp_no
@@ -55,11 +57,11 @@ The Retirement_titles data is exported to [Retirement_titles.csv](Data/Retiremen
 
 ``` sql
   drop table if exists Unique_titles;
-  Select  emp_no, first_name, last_name, title
+  Select  distinct on (emp_no) emp_no, first_name, last_name, title
   into Unique_titles
   from Retirement_titles
   WHERE to_date = ('9999-01-01')
-  order by emp_no, to_date desc;
+  order by emp_no, to_date desc ;
 ```
 The Unique_titles data is exported to [Unique_titles.csv](Data/Unique_titles.csv)
 
@@ -76,7 +78,7 @@ The Unique_titles data is exported to [Unique_titles.csv](Data/Unique_titles.csv
   group by title 
   order by count(title) desc;
 ```
-The retiring_titles data is exported to [retiring_titles.csv](Data/retiring_titles.csv)
+The retiring_titles data is exported to [retiring_titles.csv](Data/Retiring_titles.csv)
 
 ### Mentorship Eligible Employees
 
@@ -98,7 +100,18 @@ To find the list of eligible employees for mentorship program
   WHERE e.birth_date BETWEEN '1965-01-01' AND '1965-12-31' AND de.to_date ='9999-01-01'
   order by e.emp_no
 ```
-The mentorship_eligibility data is exported to [mentorship_eligibility.csv](Data/mentorship_eligibility.csv)
+The mentorship_eligibility data is exported to [mentorship_eligibility.csv](Data/Mentorship_eligibility.csv)
 
 ## Summary
+### How many roles will need to be filled as the "silver tsunami" begins to make an impact?
+Pewlett Hackard has **300024** total of number of Employees. Total number of Employees that are going to retire is **72458**. 
+This means approx **24%** of the employees will be retired soon. The company needs to take immediate actions and run a hiring drive so that they get enough time to train and knowledge transfer from experienced to new employees.
 
+Below image shows the which titles are retiring 
+<img src="Images/titles_counts.png" align="center"/>
+
+### Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+The number of employees retiring are **72458** , where as the number of employees eligible for mentorship program are **1549**. This means the eligible employees are almost **2.14%** less. 
+In order to fill the next generation, here are two recommendations
+- Increase the eligibility criteria of Mentorship Program
+- Hire skilled candidates from outside of the company 
