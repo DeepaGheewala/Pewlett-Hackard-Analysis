@@ -1,6 +1,6 @@
 --Delivery 1-
 drop table if exists Retirement_titles;
-SELECT distinct on (e.emp_no) e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date 
+SELECT distinct e.emp_no, e.first_name, e.last_name, t.title, t.from_date, t.to_date 
 INTO Retirement_titles
 from employees e
 Left Join titles t on t.emp_no = e.emp_no
@@ -8,7 +8,7 @@ WHERE e.birth_date BETWEEN '1952-01-01' AND '1955-12-31'
 order by e.emp_no;
 
 drop table if exists Unique_titles;
-Select  emp_no, first_name, last_name, title
+Select  distinct on (emp_no) emp_no, first_name, last_name, title
 into Unique_titles
 from Retirement_titles
 WHERE to_date = ('9999-01-01')
