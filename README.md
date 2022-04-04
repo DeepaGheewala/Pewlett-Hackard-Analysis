@@ -16,13 +16,13 @@ Following csv files were given to Bobb
 - [Employee Titles.csv](Data/titles.csv)
 
 The analysis should cover the following results :
-1) Find the list of employees who are going to retire soon(#List-of-Employees-who-will-be-retired-soon)
+1) Find the list of employees who are going to retire soon(#List-Of-Employees-With-Retirement-Titles)
 2) Find retiring employees titles to know what positions need to be filled
 3) Find in which department retiring employees belong to
 4) Find the eligible retiring employees for retirement package
 
 ## Results
-### List of Employees who will be retired soon
+### List Of Employees With Retirement Titles
 
 1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
 2) Then we need to join to the Titles table to get those employees current titles
