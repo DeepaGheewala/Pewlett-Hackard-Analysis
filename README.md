@@ -16,15 +16,26 @@ Following csv files were given to Bobb
 - [Employee Titles.csv](Data/titles.csv)
 
 The analysis should cover the following results :
-1) [Find the list of employees who are going to retire soon](#List-Of-Employees-With-Retirement-Titles)
-2) Find retiring employees titles to know what positions need to be filled
-3) Find in which department retiring employees belong to
-4) Find the eligible retiring employees for retirement package
+1) [Find the list of employees who are going to retire soon](#List-of-Retiring-Employee)
+2) [Find retiring employees titles to know what positions need to be filled](#List-Of-Employees-With-Retirement-Titles)
+3) [Find unique titles of the retiring employees](#List-of-unique-retiring-titles)
+4) [Count of Retiring titles](#Count-of-Retiring-titles)
+5) [Find the eligible retiring employees for retirement package]
 
 ## Results
+### List of Retiring Employees
+1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
+
+``` sql
+  drop table if exists Retirement_titles
+  SELECT distinct on (e.emp_no) e.emp_no, e.first_name, e.last_name
+  from employees e
+  WHERE e.birth_date BETWEEN '1952-01-01' AND '1955-12-31'
+  order by e.emp_no
+```
+
 ### List Of Employees With Retirement Titles
 
-1) In order to find the list employees we have to fetch data from Employee table which has birthdate in between '1952-01-01' AND '1955-12-31'
 2) Then we need to join to the Titles table to get those employees current titles
 
 ``` sql
@@ -36,4 +47,7 @@ The analysis should cover the following results :
   WHERE e.birth_date BETWEEN '1952-01-01' AND '1955-12-31'
   order by e.emp_no
 ```
+
+### List of unique retiring titles 
+### Count of Retiring titles
 ## Summary
